@@ -1,5 +1,16 @@
-[gd_scene format=3 uid="uid://gyo7x6cmcfk2"]
+[gd_scene load_steps=3 format=3 uid="uid://gyo7x6cmcfk2"]
+
+[ext_resource type="Texture2D" uid="uid://cb6w4dmovcmcu" path="res://SquareTexture.png" id="1_3q7pu"]
+[ext_resource type="Script" path="res://timerBar.gd" id="2_mv883"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="timerBar" type="Sprite2D" parent="."]
+scale = Vector2(10, 1)
+texture = ExtResource("1_3q7pu")
+script = ExtResource("2_mv883")
+
+[node name="Timer" type="Timer" parent="timerBar"]
+one_shot = true
+
+[connection signal="timeout" from="timerBar/Timer" to="timerBar" method="_on_timer_timeout"]

@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://ip3gnhfjupyg"]
+[gd_scene load_steps=3 format=3 uid="uid://ip3gnhfjupyg"]
+
+[ext_resource type="Script" path="res://3 buttons.gd" id="1_a5xci"]
+[ext_resource type="PackedScene" uid="uid://gyo7x6cmcfk2" path="res://timer.tscn" id="1_ywa1s"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_a5xci")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -17,3 +21,5 @@ offset_left = 733.0
 offset_top = 189.0
 offset_right = 732.954
 offset_bottom = 189.036
+
+[node name="Timer" parent="." instance=ExtResource("1_ywa1s")]
