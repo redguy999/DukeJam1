@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="DukeJam1"
-run/main_scene="level_handler"
+run/main_scene="res://level_handler.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=3 uid="uid://ip3gnhfjupyg"]
+
+[ext_resource type="Script" path="res://3buttons.gd" id="1_jckii"]
+[ext_resource type="Texture2D" uid="uid://cb6w4dmovcmcu" path="res://SquareTexture.png" id="2_dqvqj"]
+[ext_resource type="PackedScene" uid="uid://gyo7x6cmcfk2" path="res://timer.tscn" id="2_fhkdd"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jckii")
+
+[node name="Right" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 122.0
+offset_bottom = 108.0
+
+[node name="red" type="TextureButton" parent="Right"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 274.0
+offset_right = 338.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="blue" type="TextureButton" parent="Right"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 274.0
+offset_right = 338.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="green" type="TextureButton" parent="Right"]
+visible = false
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 274.0
+offset_right = 338.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="Timer" parent="." instance=ExtResource("2_fhkdd")]
+position = Vector2(576, 550)
+
+[node name="Middle" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="red" type="TextureButton" parent="Middle"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 526.0
+offset_top = 274.0
+offset_right = 626.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="blue" type="TextureButton" parent="Middle"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+layout_mode = 0
+offset_left = 526.0
+offset_top = 274.0
+offset_right = 626.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="green" type="TextureButton" parent="Middle"]
+visible = false
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 526.0
+offset_top = 274.0
+offset_right = 626.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="Left" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="red" type="TextureButton" parent="Left"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 814.0
+offset_top = 274.0
+offset_right = 914.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="blue" type="TextureButton" parent="Left"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+layout_mode = 0
+offset_left = 814.0
+offset_top = 274.0
+offset_right = 914.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="green" type="TextureButton" parent="Left"]
+visible = false
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 814.0
+offset_top = 274.0
+offset_right = 914.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_dqvqj")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 576.0
+offset_top = 100.0
+offset_right = 606.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 30
+
+[connection signal="button_down" from="Right/red" to="." method="_on_red_button_down"]
+[connection signal="button_down" from="Right/blue" to="." method="_on_blue_button_down"]
+[connection signal="button_down" from="Right/green" to="." method="_on_green_button_down"]
+[connection signal="button_down" from="Middle/red" to="." method="_on_red_button_down"]
+[connection signal="button_down" from="Middle/blue" to="." method="_on_blue_button_down"]
+[connection signal="button_down" from="Middle/green" to="." method="_on_green_button_down"]
+[connection signal="button_down" from="Left/red" to="." method="_on_red_button_down"]
+[connection signal="button_down" from="Left/blue" to="." method="_on_blue_button_down"]
+[connection signal="button_down" from="Left/green" to="." method="_on_green_button_down"]

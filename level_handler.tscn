@@ -15,6 +15,7 @@ editor_description = "Before the level begins, a grey box will cover the screen,
 [node name="Game" type="Node2D" parent="Example"]
 
 [node name="Instructions" type="Node2D" parent="."]
+visible = false
 z_index = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Instructions"]
@@ -51,5 +52,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="LevelComplete" type="Node2D" parent="."]
+[node name="levelComplete" type="Node2D" parent="."]
+visible = false
+
+[node name="gameOver" type="Node2D" parent="."]
 visible = false
