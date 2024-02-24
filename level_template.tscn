@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d368kdno24xhx"]
+
+[ext_resource type="Script" path="res://scene_template.gd" id="1_kknst"]
+[ext_resource type="PackedScene" uid="uid://gyo7x6cmcfk2" path="res://timer.tscn" id="2_tx6br"]
+
+[node name="levelTemplate" type="Node2D"]
+script = ExtResource("1_kknst")
+
+[node name="timer" parent="." instance=ExtResource("2_tx6br")]

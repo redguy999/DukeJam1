@@ -12,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 122.0
 offset_bottom = 108.0
+metadata/_edit_use_anchors_ = true
 
 [node name="red" type="TextureButton" parent="Right"]
 visible = false
@@ -51,6 +52,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="red" type="TextureButton" parent="Middle"]
 visible = false
@@ -87,6 +89,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="red" type="TextureButton" parent="Left"]
 visible = false
@@ -125,6 +128,7 @@ offset_top = 100.0
 offset_right = 606.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="Right/red" to="." method="_on_red_button_down"]
 [connection signal="button_down" from="Right/blue" to="." method="_on_blue_button_down"]

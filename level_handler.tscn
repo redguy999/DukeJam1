@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd15grfg2y8q6"]
+[gd_scene load_steps=4 format=3 uid="uid://cd15grfg2y8q6"]
 
 [ext_resource type="Script" path="res://level_handler.gd" id="1_ywomg"]
 [ext_resource type="Texture2D" uid="uid://cb6w4dmovcmcu" path="res://SquareTexture.png" id="2_hfk0p"]
+[ext_resource type="Texture2D" uid="uid://b30xobywa6r2e" path="res://Failed.png" id="3_8wc4a"]
 
 [node name="LevelHandler" type="Node2D"]
 script = ExtResource("1_ywomg")
@@ -55,5 +56,25 @@ autowrap_mode = 2
 [node name="levelComplete" type="Node2D" parent="."]
 visible = false
 
+[node name="Label" type="Label" parent="levelComplete"]
+modulate = Color(0, 1, 0, 1)
+offset_left = 465.0
+offset_top = 278.0
+offset_right = 660.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 50
+text = "Correct!"
+
 [node name="gameOver" type="Node2D" parent="."]
-visible = false
+
+[node name="Wrong" type="Sprite2D" parent="gameOver"]
+position = Vector2(576, 324)
+texture = ExtResource("3_8wc4a")
+
+[node name="Label" type="Label" parent="gameOver"]
+offset_left = 576.0
+offset_top = 450.0
+offset_right = 616.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 20
+text = "Score ="

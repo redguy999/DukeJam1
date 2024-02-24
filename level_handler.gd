@@ -11,52 +11,68 @@ var levelInstructions=[
 	"Click on the button that matches the text"
 ]
 var instructions=""
+var random =  RandomNumberGenerator.new()
+var score = 0
 func _ready():
 	beginLevel()
 	pass # Replace with function body.
 var inst#need to hold this as global
+
 func beginLevel():#I'll fix these names, maybe.
 	get_node("levelComplete").visible=false
 	get_node("gameOver").visible=false
 	#TODO: randomly select a level.
-	level=Levels[0]#Temp
-	instructions=levelInstructions[0]
+	var hold = selectLevel()
+	print(hold)
+	level=Levels[hold]#Temp
+	instructions=levelInstructions[hold]
 	loadLevel()
 	showInstructions()
 	connectLevel()
-	print(inst.get_children())
 	await get_tree().create_timer(3.0).timeout#TL;DR: wait three seconds
 	#That should be more than enough time to read the instructions.
-	print(inst.get_children())
 	get_node("Instructions").visible=false
-	print(inst.get_children())
-	#Need to connect to the completion node.
-	print(inst.get_children())
 	getLevelTimer().get_child(0).start()#starts the timer.
+	
+func selectLevel():
+	if(!score):#First level should be normal 3Buttons.
+		return 0
+	return random.randi_range(0, Levels.size()-1)
+	
 func connectLevel():
 	inst.gameState.connect(endScreen)
+	
 func endScreen(boole):
 	finishLevel()
 	if(boole):
 		get_node("levelComplete").visible=true
+		score+=1
+		await get_tree().create_timer(3.0).timeout#TL;DR: wait three seconds
+		beginLevel()
 	else:
 		get_node("gameOver").visible=true
+		var scoreDis = get_node("gameOver/Label")
+		scoreDis.text="Score = "+str(score)
+		await get_tree().create_timer(.1).timeout
+		print("score moved")
+		scoreDis.position.x+=(-scoreDis.size.x/2)
 func loadLevel():
 	var newScene = load("res://"+level+".tscn")
 	inst= newScene.instantiate()
 	add_child(inst)
-	print(inst.get_children())#but works here.
+	
 func showInstructions():#Assume that the level has already been added to the tree
 	get_node("Instructions").visible=true#This gets hidden at times.
 	get_node("Instructions/Control/Label").text=instructions#Replace with instructions for level.
+
 func getLevelTimer():
-	for child in inst.get_children(true):#getChildren fails here
+	for child in inst.get_children(true):
 		if(child.name=="Timer"):
 			return child.get_child(0)
-func finishLevel():
+			
+func finishLevel():#more like remove level
 	getLevelTimer().levelFinished=true
 	inst.queue_free()#Remove the level
-	get_node('levelComplete').visible=true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta):
 	pass
