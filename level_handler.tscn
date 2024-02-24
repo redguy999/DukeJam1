@@ -8,6 +8,7 @@
 script = ExtResource("1_ywomg")
 
 [node name="Instructions" type="Node2D" parent="."]
+visible = false
 z_index = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Instructions"]
@@ -57,7 +58,6 @@ theme_override_font_sizes/font_size = 50
 text = "Correct!"
 
 [node name="gameOver" type="Node2D" parent="."]
-visible = false
 
 [node name="Wrong" type="Sprite2D" parent="gameOver"]
 position = Vector2(576, 324)
@@ -70,3 +70,23 @@ offset_right = 616.0
 offset_bottom = 473.0
 theme_override_font_sizes/font_size = 20
 text = "Score ="
+
+[node name="Restart" type="Button" parent="gameOver"]
+offset_left = 150.0
+offset_top = 390.0
+offset_right = 250.0
+offset_bottom = 490.0
+scale = Vector2(2, 2)
+text = "Restart"
+
+[node name="toTitle" type="Button" parent="gameOver"]
+offset_left = 802.0
+offset_top = 390.0
+offset_right = 902.0
+offset_bottom = 490.0
+scale = Vector2(2, 2)
+text = "Return to 
+Title"
+
+[connection signal="pressed" from="gameOver/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="gameOver/toTitle" to="." method="_on_to_title_pressed"]

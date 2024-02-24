@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://4yld6h2g0iq1"]
+
+[ext_resource type="Script" path="res://slideIt.gd" id="1_1omx4"]
+[ext_resource type="PackedScene" uid="uid://gyo7x6cmcfk2" path="res://timer.tscn" id="1_oe4ed"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1omx4")
+
+[node name="Timer" parent="." instance=ExtResource("1_oe4ed")]
+position = Vector2(576, 550)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 250.0
+offset_right = 176.0
+offset_bottom = 266.0
+scale = Vector2(10, 10)
+allow_greater = true
+scrollable = false
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 40.0
+offset_right = 714.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 75
+text = "Slide it!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="Control/HSlider" to="." method="_on_h_slider_value_changed"]
