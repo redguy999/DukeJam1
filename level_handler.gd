@@ -3,12 +3,15 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 #Each level must be the same as its scene name do not include the file tag
-var Levels=["3buttons","3buttonsWrongColor"]
+var Levels=["3buttons","3buttonsWrongColor","doNothing"]
 var level=""
 var levelInstructions=[
 	"Click on the button that matches the text",
 	#both 3 button levels should have the same instructions.
-	"Click on the button that matches the text"
+	"Click on the button that matches the text",
+	"You may: Move the mouse around, click the grey background, click the timer bar, ignore the game, do nothing, drink, eat, sleep, speak, talk, will anyone even read all of this, rest, play a different game, run, hide, jump, crouch, sleep- wait I already said that, uh, I'm out of ideas
+	You must: wait for the timer to run out
+	You must NOT: click the button"
 ]
 var instructions=""
 var random =  RandomNumberGenerator.new()
@@ -23,9 +26,11 @@ func beginLevel():#I'll fix these names, maybe.
 	get_node("gameOver").visible=false
 	#TODO: randomly select a level.
 	var hold = selectLevel()
-	print(hold)
-	level=Levels[hold]#Temp
+	level=Levels[hold]
 	instructions=levelInstructions[hold]
+	if(level=="doNothing"):#The text is a bit of a meme, but you only actually need to read the last 2 lines.
+		get_node("Instructions/Control/Label").size.x=1200
+		get_node("Instructions/Control/Label").position.x+=(700-1200)/2
 	loadLevel()
 	showInstructions()
 	connectLevel()
@@ -35,6 +40,7 @@ func beginLevel():#I'll fix these names, maybe.
 	getLevelTimer().get_child(0).start()#starts the timer.
 	
 func selectLevel():
+	#return 2 #Uncomment and set to a specific number to test a level
 	if(!score):#First level should be normal 3Buttons.
 		return 0
 	return random.randi_range(0, Levels.size()-1)
@@ -45,6 +51,9 @@ func connectLevel():
 func endScreen(boole):
 	finishLevel()
 	if(boole):
+		if(level=="doNothing"):#Make sure to undo it here.
+			get_node("Instructions/Control/Label").size.x=700
+			get_node("Instructions/Control/Label").position.x+=(1200-700)/2
 		get_node("levelComplete").visible=true
 		score+=1
 		await get_tree().create_timer(3.0).timeout#TL;DR: wait three seconds

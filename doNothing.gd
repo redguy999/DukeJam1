@@ -9,8 +9,13 @@ func _ready():
 	pass # Replace with function body.
 func timesUp():
 	#If the player is suppose to win by timeout, have it emit true.
-	gameState.emit(false)
+	gameState.emit(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_texture_button_button_down():#You're not suppose to do anything here.
+	gameState.emit(false)
+	pass # Replace with function body.

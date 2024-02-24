@@ -7,41 +7,47 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jckii")
 
-[node name="Right" type="Control" parent="."]
+[node name="Left" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 122.0
 offset_bottom = 108.0
 metadata/_edit_use_anchors_ = true
 
-[node name="red" type="TextureButton" parent="Right"]
+[node name="red" type="TextureButton" parent="Left"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_left = 238.0
+offset_left = 150.0
 offset_top = 274.0
-offset_right = 338.0
+offset_right = 250.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
-[node name="blue" type="TextureButton" parent="Right"]
+[node name="blue" type="TextureButton" parent="Left"]
 visible = false
 modulate = Color(0, 0, 1, 1)
 layout_mode = 0
-offset_left = 238.0
+offset_left = 150.0
 offset_top = 274.0
-offset_right = 338.0
+offset_right = 250.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
-[node name="green" type="TextureButton" parent="Right"]
+[node name="green" type="TextureButton" parent="Left"]
 visible = false
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
-offset_left = 238.0
+offset_left = 150.0
 offset_top = 274.0
-offset_right = 338.0
+offset_right = 250.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
 [node name="Timer" parent="." instance=ExtResource("2_fhkdd")]
@@ -62,6 +68,8 @@ offset_left = 526.0
 offset_top = 274.0
 offset_right = 626.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
 [node name="blue" type="TextureButton" parent="Middle"]
@@ -72,6 +80,8 @@ offset_left = 526.0
 offset_top = 274.0
 offset_right = 626.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
 [node name="green" type="TextureButton" parent="Middle"]
@@ -82,43 +92,51 @@ offset_left = 526.0
 offset_top = 274.0
 offset_right = 626.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
-[node name="Left" type="Control" parent="."]
+[node name="Right" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="red" type="TextureButton" parent="Left"]
+[node name="red" type="TextureButton" parent="Right"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_left = 814.0
+offset_left = 900.0
 offset_top = 274.0
-offset_right = 914.0
+offset_right = 1000.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
-[node name="blue" type="TextureButton" parent="Left"]
+[node name="blue" type="TextureButton" parent="Right"]
 visible = false
 modulate = Color(0, 0, 1, 1)
 layout_mode = 0
-offset_left = 814.0
+offset_left = 900.0
 offset_top = 274.0
-offset_right = 914.0
+offset_right = 1000.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
-[node name="green" type="TextureButton" parent="Left"]
+[node name="green" type="TextureButton" parent="Right"]
 visible = false
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
-offset_left = 814.0
+offset_left = 900.0
 offset_top = 274.0
-offset_right = 914.0
+offset_right = 1000.0
 offset_bottom = 374.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_dqvqj")
 
 [node name="Label" type="Label" parent="."]
@@ -130,12 +148,12 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_down" from="Right/red" to="." method="_on_red_button_down"]
-[connection signal="button_down" from="Right/blue" to="." method="_on_blue_button_down"]
-[connection signal="button_down" from="Right/green" to="." method="_on_green_button_down"]
-[connection signal="button_down" from="Middle/red" to="." method="_on_red_button_down"]
-[connection signal="button_down" from="Middle/blue" to="." method="_on_blue_button_down"]
-[connection signal="button_down" from="Middle/green" to="." method="_on_green_button_down"]
 [connection signal="button_down" from="Left/red" to="." method="_on_red_button_down"]
 [connection signal="button_down" from="Left/blue" to="." method="_on_blue_button_down"]
 [connection signal="button_down" from="Left/green" to="." method="_on_green_button_down"]
+[connection signal="button_down" from="Middle/red" to="." method="_on_red_button_down"]
+[connection signal="button_down" from="Middle/blue" to="." method="_on_blue_button_down"]
+[connection signal="button_down" from="Middle/green" to="." method="_on_green_button_down"]
+[connection signal="button_down" from="Right/red" to="." method="_on_red_button_down"]
+[connection signal="button_down" from="Right/blue" to="." method="_on_blue_button_down"]
+[connection signal="button_down" from="Right/green" to="." method="_on_green_button_down"]

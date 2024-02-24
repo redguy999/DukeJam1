@@ -6,4 +6,5 @@
 [node name="levelTemplate" type="Node2D"]
 script = ExtResource("1_kknst")
 
-[node name="timer" parent="." instance=ExtResource("2_tx6br")]
+[node name="Timer" parent="." instance=ExtResource("2_tx6br")]
+position = Vector2(576, 550)
