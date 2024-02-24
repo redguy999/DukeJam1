@@ -38,12 +38,16 @@ func beginLevel():#I'll fix these names, maybe.
 	#That should be more than enough time to read the instructions.
 	get_node("Instructions").visible=false
 	getLevelTimer().get_child(0).start()#starts the timer.
-	
+
 func selectLevel():
 	#return 2 #Uncomment and set to a specific number to test a level
 	if(!score):#First level should be normal 3Buttons.
 		return 0
-	return random.randi_range(0, Levels.size()-1)
+	var hold = random.randi_range(0, Levels.size()-1)
+	#no repeat levels, if we end up with like, 10+ levels I think its fine to remove this.
+	while(Levels.find(level)==hold):
+		hold = random.randi_range(0, Levels.size()-1)
+	return hold
 	
 func connectLevel():
 	inst.gameState.connect(endScreen)
