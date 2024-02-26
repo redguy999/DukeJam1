@@ -28,4 +28,12 @@ pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("2_logaf")
 texture_pressed = ExtResource("2_logaf")
 
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+z_as_relative = false
+position = Vector2(567.389, 333.775)
+scale = Vector2(12, 7)
+texture = ExtResource("2_logaf")
+
 [connection signal="button_down" from="Control/TextureButton" to="." method="_on_texture_button_button_down"]

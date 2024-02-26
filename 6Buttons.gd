@@ -7,8 +7,8 @@ extends Node2D
 var correctButton
 func _ready():
 	get_node("Timer").timeOver.connect(timesUp)
-	placeButtons()
 	makeAnswer()
+	placeButtons()
 
 signal gameState(Success)#True if you won, otherwise false.
 func timesUp():
@@ -20,33 +20,21 @@ func gameWon():
 var random =  RandomNumberGenerator.new()
 
 func makeAnswer():
-	var picker = random.randi_range(0, 2)
-	correctButton=buttonCombos[0][picker]
-	var word = get_node("Label")
-	word.text=correctButton.to_upper()
-	word.modulate=correctButton
-	await get_tree().create_timer(.5).timeout
-	#A wait is required otherwise size will not have updated yet.
-	#set_defered might work but I'm not sure how i'd write that.
-	word.position.x+=(-word.size.x/2)
-
-var buttonCombos=[#Hardcoding it cause its quicker
-	["red","green","blue"],
-	["red","blue","green"],
-	["blue","red","green"],
-	["blue","green","red"],
-	["green","red","blue"],
-	["green","blue","red"]
-]
+	pass
+	
+var buttonColors = ["red","green","blue","Magenta","yellow","Cyan"]
 
 func placeButtons():
 	random.randomize()
 	var picker = random.randi_range(0, 5)
-	var nodes = ["Left","Middle","Right"]
+	var nodes = ["LeftUpper","MiddleUpper","RightUpper","LeftLower","MiddleLower","RightLower"]
 	#get_node("Left/blue")
-	for i in range(nodes.size()):
-		get_node(nodes[i]+"/"+buttonCombos[picker][i]).visible=true
-	
+	var counter = 5
+	for node in nodes:
+		picker = random.randi_range(0, counter)
+		get_node(node+"/"+buttonColors[picker]).visible=true
+		buttonColors.pop_at(picker)
+		counter-=1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,6 +46,7 @@ func _on_red_button_down():
 		gameWon()
 	else:
 		timesUp()
+	pass # Replace with function body.
 
 
 func _on_blue_button_down():
@@ -65,6 +54,7 @@ func _on_blue_button_down():
 		gameWon()
 	else:
 		timesUp()
+	pass # Replace with function body.
 
 
 func _on_green_button_down():
@@ -72,3 +62,28 @@ func _on_green_button_down():
 		gameWon()
 	else:
 		timesUp()
+	pass # Replace with function body.
+
+
+func _on_yellow_button_down():
+	if(correctButton=="yellow"):
+		gameWon()
+	else:
+		timesUp()
+	pass # Replace with function body.
+
+
+func _on_cyan_button_down():
+	if(correctButton=="Cyan"):
+		gameWon()
+	else:
+		timesUp()
+	pass # Replace with function body.
+
+
+func _on_magenta_button_down():
+	if(correctButton=="Magenta"):
+		gameWon()
+	else:
+		timesUp()
+	pass # Replace with function body.

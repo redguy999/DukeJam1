@@ -58,6 +58,7 @@ theme_override_font_sizes/font_size = 50
 text = "Correct!"
 
 [node name="gameOver" type="Node2D" parent="."]
+visible = false
 
 [node name="Wrong" type="Sprite2D" parent="gameOver"]
 position = Vector2(576, 324)
@@ -70,6 +71,8 @@ offset_right = 616.0
 offset_bottom = 473.0
 theme_override_font_sizes/font_size = 20
 text = "Score ="
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Restart" type="Button" parent="gameOver"]
 offset_left = 150.0

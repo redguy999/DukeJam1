@@ -15,10 +15,6 @@ func timesUp():
 func _process(delta):
 	pass
 
-func _on_h_slider_drag_ended(value_changed):
-	pass # Replace with function body.
-
-
 func _on_h_slider_value_changed(value):
 	if(value>=100):
 		gameState.emit(true)

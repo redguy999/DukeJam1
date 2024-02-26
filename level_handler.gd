@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 #Each level must be the same as its scene name do not include the file tag
-var Levels=["3buttons","3buttonsWrongColor","doNothing","slideIt"]
+var Levels=["3buttons","3buttonsWrongColor","doNothing","slideIt","6Buttons"]
 var level=""
 var levelInstructions=[
 	"Click on the button that matches the text",
@@ -12,7 +12,9 @@ var levelInstructions=[
 	"You may: Move the mouse around, click the grey background, click the timer bar, ignore the game, do nothing, drink, eat, sleep, speak, talk, will anyone even read all of this, rest, play a different game, run, hide, jump, crouch, sleep- wait I already said that, uh, I'm running out of ideas, rest your eyes, prepare for the next game, write something down or draw
 	You must: wait for the timer to run out
 	You must NOT: click the button",
-	"Follow the instructions that will appear at the top of the screen"
+	"Follow the instructions that will appear at the top of the screen",
+	"Press the REPLACE button on the next screen"
+	
 	#Might change it to include the slide here.
 ]
 var instructions=""
@@ -33,6 +35,11 @@ func beginLevel():#I'll fix these names, maybe.
 		get_node("Instructions/Control/Label").size.x=1200
 		get_node("Instructions/Control/Label").position.x+=(700-1200)/2
 	loadLevel()
+	if(level=="6Buttons"):
+		hold = ["red","green","blue","Magenta","yellow","Cyan"]
+		hold = hold[random.randi_range(0, 5)]#Hopefully this works.
+		instructions=instructions.replacen("REPLACE", hold.to_lower())
+		inst.correctButton=hold
 	showInstructions()
 	connectLevel()
 	await get_tree().create_timer(3.0).timeout#TL;DR: wait three seconds
@@ -41,7 +48,7 @@ func beginLevel():#I'll fix these names, maybe.
 	getLevelTimer().get_child(0).start()#starts the timer.
 
 func selectLevel():
-	#return 1 #Uncomment and set to a specific number to test a level
+	#return 4 #Uncomment and set to a specific number to test a level
 	if(!score):#First level should be normal 3Buttons.
 		return 0
 	var hold = random.randi_range(0, Levels.size()-1)
